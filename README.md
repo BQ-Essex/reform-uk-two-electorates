@@ -63,6 +63,12 @@ rather than hidden:
 - A **direct test of the *Brexitland* education thesis**: the cross-pressured cluster is the
   least-credentialled of the three, and the gap holds net of class and income—education acting
   as more than an economic proxy, as the successor thesis predicts.
+- A **precise name for the cross-pressure**: the second cluster is pro-redistribution *and*
+  welfare-sceptical *and* anti-immigration (on the split-ballot items—small n—around four in five
+  rate immigration bad for the economy). Redistribution to an implied in-group, held alongside
+  hostility to an out-group's claims on the same welfare state, is what the literature calls
+  **welfare chauvinism** (Andersen & Bjørklund, 1990; Careja & Harris, 2022)—a sharper and less
+  paradoxical description than "a left-wing electorate inside a right-wing party."
 
 ## Selected figures
 
@@ -75,7 +81,25 @@ rather than hidden:
 The claims here are deliberately **descriptive**, not predictive. The Reform subsample is
 modest, the clustering is unweighted (though reweighting to BSA's published weights leaves the split essentially unchanged, at 52/44/4), and some subgroups are small—so these are structural
 patterns in attitudes, not turnout forecasts. The "welfare-reliant" character of the second
-cluster is a *compositional* fact (benefit receipt), not a claim about welfare *attitudes*.
+cluster is a *compositional* fact (53% benefit receipt), not a claim about welfare *attitudes*—on
+the welfare-attitudes scale itself, the second cluster is about as sceptical of claimants as the
+conventional right-authoritarian cluster is. That combination (pro-redistribution, welfare-sceptical,
+anti-immigration) is what the report names *welfare chauvinism* rather than describing the cluster
+as generically left-wing.
+
+The 2014→2024 comparison is two independent survey cross-sections, not a panel, so it can show
+that the authoritarian-left profile is durable and that the coalition's *composition* shifted
+(a difference-in-differences finds it added a conventional-right layer rather than shedding its
+left-behind core)—it cannot show that any individual voter changed their mind. Confirming
+conversion versus composition at the individual level would need panel data (e.g. the British
+Election Study), which is beyond what a repeated cross-section can settle.
+
+The geographic-triangulation section (aggregate regional cluster shares against regional vote
+share and deprivation) is a supplementary cross-check, not load-bearing evidence: it compares
+two different kinds of electorate at the aggregate level, so it carries the usual ecological-inference
+caveat and is not asked to substitute for the individual-level clustering the rest of the project
+relies on.
+
 The confidence in the central finding comes not from any single model but from its recurrence
 across linear and non-linear, supervised and unsupervised methods, and across a decade of data.
 

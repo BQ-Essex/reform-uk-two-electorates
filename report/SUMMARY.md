@@ -51,9 +51,14 @@ Clustered on political attitudes alone, Reform's voters split almost in half:
   strongly pro-redistribution and left-leaning, and with a majority receiving benefits.
 
 That second group is the cross-pressured one. Their economic instincts sit in real tension with the
-party they voted for—Reform campaigned in 2024 on roughly £90bn of tax cuts. (One honest note: it's
-their *benefit reliance*, not their answers on a welfare-attitudes scale, that makes the "left-behind"
-description concrete—the two groups actually answer the welfare questions much the same way.)
+party they voted for—Reform campaigned in 2024 on roughly £90bn of tax cuts. But "economically left"
+undersells what's actually going on. This group is pro-redistribution *and* about as sceptical of
+welfare claimants as the conventional right-authoritarian group *and* nearly as anti-immigration
+(around four in five, on the relevant split-ballot items, rate immigration bad for the economy). It's
+their *benefit reliance*, not sympathy for claimants, that makes the "left-behind" label concrete.
+Redistribution to an implied in-group, alongside hostility to an out-group's claim on the same welfare
+state, is what political scientists call **welfare chauvinism** (Andersen & Bjørklund, 1990)—a more
+precise description than "a left-wing electorate inside a right-wing party."
 
 ![The two attitudinal axes: PC1 (left–right fusion) and PC2 (authoritarian-left vs libertarian-right)](../figures/fig03_pca-biplot.png)
 
