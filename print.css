@@ -39,6 +39,18 @@ body {
   padding: 0;
 }
 
+/* The paper-grain texture (body::before, a tiled noise SVG at ~3.5% opacity) is a
+   screen-only flourish: on screen the body box IS the whole viewport, so the grain
+   covers everything uniformly. In print, body only covers the page's content box,
+   not the margins added above -- so the grain shifted the content box's average
+   colour a few RGB points darker than the flat-tinted margin around it, and that
+   was showing up as a visible rectangle seam at the margin boundary. Turning it
+   off in print removes the seam and restores one continuous flat tint. */
+body::before {
+  content: none !important;
+  display: none !important;
+}
+
 /* Wider column for print than the 920px screen cap. */
 .wrap {
   max-width: none !important;
