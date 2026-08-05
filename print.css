@@ -23,8 +23,12 @@ body {
   padding: 0 !important;
 }
 
-/* Keep the cover block and key-finding callout from splitting across a page edge. */
-.cover, .keyfinding, figure, .tablewrap {
+/* Keep the cover block, key-finding callout and figures from splitting across a page
+   edge. Tables are deliberately NOT included here: some run to 15+ rows, and forcing
+   a tall table to never split pushes the whole thing (heading and all) onto the next
+   page, leaving a large blank gap on the one before it -- worse than a table simply
+   continuing over a page break, which is normal in print. */
+.cover, .keyfinding, figure {
   break-inside: avoid;
 }
 
@@ -45,11 +49,20 @@ th, td {
   white-space: normal !important;
 }
 
+/* A heading may never be the last thing on a page, and neither may the paragraph
+   immediately after it -- that pair is what was landing alone at a page bottom with
+   the section's real content pushed cold onto the next page. Deliberately one level
+   only: chaining further (heading -> para -> whatever comes after that) is what was
+   forcing large tables to jump whole onto the next page and leaving a big blank gap
+   on the one before it, which is a worse defect than the one this is fixing. */
 h2, h3 {
-  break-after: avoid;
+  break-after: avoid-page;
+}
+h2 + p, h3 + p {
+  break-after: avoid-page;
 }
 
-p {
+p, li {
   orphans: 3;
   widows: 3;
 }
