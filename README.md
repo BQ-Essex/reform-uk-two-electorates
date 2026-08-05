@@ -1,0 +1,121 @@
+# One Coalition, Two Electorates: Cross-Pressure in the Reform UK Vote
+
+**Bradley Quinlan**, 2026
+
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Jupyter](https://img.shields.io/badge/Jupyter-notebook-orange)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-PCA%20·%20K--means%20·%20trees-F7931E)
+![License: MIT](https://img.shields.io/badge/Code%20License-MIT-green)
+
+A multi-method, multi-dataset machine-learning study of whether Reform UK's 2024
+electorate is a single bloc or several.
+
+> **Headline finding:** clustered on political attitudes alone, Reform's 2024 voters
+> split almost in half—**55%** in a conventional right-authoritarian group and
+> **41%** in an **authoritarian-left** group that is pro-redistribution, left-leaning,
+> and disproportionately reliant on benefits, sitting inside a party that campaigned on
+> ~£90bn of tax cuts. Projected onto 2014 UKIP identifiers, the "left-behind" cluster is
+> *larger* still (59%), so the pattern predates Reform by a decade.
+
+## What's here
+
+| Path | What it is |
+|------|-----------|
+| [`notebook/`](notebook/) | The full analysis notebook—code, narrative and figures inline. This is the primary artefact. |
+| [`report/report.html`](report/) | The complete write-up rendered for reading—prose, figures and tables, with the code kept in the notebook. |
+| [`report/SUMMARY.html`](report/SUMMARY.html) | The short summary, styled to match the report. |
+| [`report/SUMMARY.md`](report/SUMMARY.md) | A short, code-free reader's version—prose, figures and headline numbers. |
+| [`figures/`](figures/) | The eleven figures exported from the analysis. |
+| [`data/`](data/) | The two open datasets, plus a README on obtaining the restricted survey data. |
+
+## The question
+
+Cross-pressure theory describes a base that is socially hardline yet economically left as
+"left behind" (Ford & Goodwin)—a thesis that is contested (Evans & Mellon) and since
+reframed around identity and education (*Brexitland*). This project tests, with machine
+learning rather than assertion, whether that internal tension actually shows up *inside*
+Reform's own voters, whether it is robust to how it is measured, and whether it is long-standing.
+
+## Method, in brief
+
+Rather than trust one model, several are made to cross-examine each other on the 2024
+British Social Attitudes Survey—and where they disagree, the disagreement is diagnosed
+rather than hidden:
+
+- **PCA** finds the attitudinal axes (PC1 = the familiar left–right fusion; PC2 = the
+  authoritarian-left vs libertarian-right signature the project is built around).
+- **K-means** clustering, with a transparent judgement to use *k*=3 rather than the
+  silhouette-optimal *k*=2 (which is itself the two-cluster story the title states).
+- **Two autoencoders**—a `tanh`-bottleneck network and a from-scratch, framework-free
+  linear-bottleneck one—used as an honest probe of nonlinearity. Together they show the
+  linear subspace is adequate for *reconstruction* but that the fine partition is
+  *embedding-sensitive*, which is where the analysis's real uncertainty turns out to sit.
+- **Hierarchical (Ward) clustering** agrees substantially with K-means (ARI 0.75), with the
+  only disagreement at the soft boundary between the two Reform clusters.
+- **Robustness checks**—dropping the weakest variable, clustering on the full 5-D space,
+  a third component, and a bootstrap—leave the split essentially unchanged (Cluster-1
+  membership is stable across resamples at probability 0.98).
+- A **supervised decision tree** independently leans on the same dominant attitude and
+  struggles to classify the cross-pressured cluster, exactly as such a group should.
+- A **longitudinal projection** onto 2014 UKIP identifiers, with a difference-in-differences
+  test showing the coalition *broadened by adding* conventional-right voters rather than
+  shedding its left-behind core.
+- A **direct test of the *Brexitland* education thesis**: the cross-pressured cluster is the
+  least-credentialled of the three, and the gap holds net of class and income—education acting
+  as more than an economic proxy, as the successor thesis predicts.
+
+## Selected figures
+
+![PCA biplot of the attitudinal feature space](figures/fig03_pca-biplot.png)
+
+![K-means k=3 clusters on the PCA components](figures/fig05_kmeans-clusters-k3-scatter.png)
+
+## Scope & caveats
+
+The claims here are deliberately **descriptive**, not predictive. The Reform subsample is
+modest, the clustering is unweighted (though reweighting to BSA's published weights leaves the split essentially unchanged, at 52/44/4), and some subgroups are small—so these are structural
+patterns in attitudes, not turnout forecasts. The "welfare-reliant" character of the second
+cluster is a *compositional* fact (benefit receipt), not a claim about welfare *attitudes*.
+The confidence in the central finding comes not from any single model but from its recurrence
+across linear and non-linear, supervised and unsupervised methods, and across a decade of data.
+
+## Reproducing the analysis
+
+```bash
+pip install -r requirements.txt
+# obtain the restricted BSA files (see data/README.md) and place them in data/
+jupyter lab notebook/MA336_Project_Notebook.ipynb   # run from the repo root
+```
+
+The two open datasets are already included, so the geographic-triangulation section runs
+out of the box; the core clustering additionally requires the two BSA files.
+
+## Provenance
+
+This analysis began as a University of Essex MA336 machine-learning module project and was
+subsequently revised and extended for standalone release: the survey coding was corrected,
+every figure recomputed from source, a second (linear-bottleneck) autoencoder and a battery of
+robustness checks added, and the longitudinal claim re-tested with a difference-in-differences.
+
+## Data availability & licence
+
+This repository is published **without the raw survey microdata**. The British Social
+Attitudes files are supplied under the **UK Data Service End User Licence**, which does not
+permit redistribution. See [`data/README.md`](data/README.md) for the exact study numbers
+and how to obtain them (free, registration required).
+
+Every figure and table in this repository is a **derived statistical output**—aggregate
+summaries, model results and cluster centroids. No individual-level records are reproduced.
+
+- **Code** is released under the [MIT Licence](LICENSE).
+- **The report text and figures** are © Bradley Quinlan, 2026, and may be read and cited but
+  not reproduced wholesale without permission.
+
+## Citation
+
+If you refer to this work: *Quinlan, B. (2026) "One Coalition, Two Electorates: Cross-Pressure
+in the Reform UK Vote."*
+
+Underlying data: NatCen Social Research, *British Social Attitudes Survey* 2024
+(UK Data Service SN 9478) and 2014 (SN 7809); MHCLG *English Indices of Deprivation 2019*;
+House of Commons Library *2025 Local Elections Handbook and Dataset*.

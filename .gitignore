@@ -1,0 +1,16 @@
+# Restricted survey microdata — never commit (UK Data Service End User Licence)
+*.tab
+data/*.tab
+p19056-bsa24-archive*
+bsa14_final*
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.ruff_cache/
+.venv/
+venv/
+
+# OS
+.DS_Store
