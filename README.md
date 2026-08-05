@@ -114,6 +114,14 @@ jupyter lab notebook/MA336_Project_Notebook.ipynb   # run from the repo root
 The two open datasets are already included, so the geographic-triangulation section runs
 out of the box; the core clustering additionally requires the two BSA files.
 
+`report/report.html` is generated from the notebook by `build_report.py`
+(`pip install markdown`), so editing the notebook and re-running the script keeps the
+two in sync. It embeds Lora and Lato as base64 web fonts, reading them from the system
+font paths used in this project's Linux build environment (the `fonts-google-lora` /
+`fonts-lato` packages, or equivalent); point `font_face()` at your own TTFs if building
+elsewhere. It does not regenerate `SUMMARY.html` or the print PDFs, which are built and
+maintained separately.
+
 ## Provenance
 
 This analysis began as a University of Essex MA336 machine-learning module project and was
