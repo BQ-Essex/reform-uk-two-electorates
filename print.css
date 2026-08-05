@@ -1,0 +1,65 @@
+/* Print stylesheet applied only at PDF-render time, on top of report.html / SUMMARY.html
+   as they stand -- never edits those files. Full-bleed paper tint, wider column, tidy
+   page breaks, page numbers. */
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+html, body {
+  background: #F6F5F1 !important;
+}
+
+/* Inset the content ourselves since @page margin is 0 (that's what lets the canvas
+   tint reach every edge instead of leaving a white margin strip). */
+body {
+  padding: 20mm 18mm 24mm 18mm;
+}
+
+/* Wider column for print than the 920px screen cap. */
+.wrap {
+  max-width: none !important;
+  padding: 0 !important;
+}
+
+/* Keep the cover block and key-finding callout from splitting across a page edge. */
+.cover, .keyfinding, figure, .tablewrap {
+  break-inside: avoid;
+}
+
+/* Weasyprint doesn't clip/scroll overflow-x like a browser -- wide monospace stdout
+   blocks and wide tables just run off the page edge unless forced to wrap. */
+.dataout {
+  white-space: pre-wrap !important;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.tablewrap {
+  overflow: visible !important;
+}
+table {
+  font-size: 12.5px;
+}
+th, td {
+  white-space: normal !important;
+}
+
+h2, h3 {
+  break-after: avoid;
+}
+
+p {
+  orphans: 3;
+  widows: 3;
+}
+
+/* Page numbers. */
+@page {
+  @bottom-center {
+    content: "One Coalition, Two Electorates — " counter(page) " / " counter(pages);
+    font-family: 'LatoDoc', sans-serif;
+    font-size: 9px;
+    color: #5A6165;
+  }
+}

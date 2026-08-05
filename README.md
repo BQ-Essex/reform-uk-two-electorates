@@ -119,8 +119,13 @@ out of the box; the core clustering additionally requires the two BSA files.
 two in sync. It embeds Lora and Lato as base64 web fonts, reading them from the system
 font paths used in this project's Linux build environment (the `fonts-google-lora` /
 `fonts-lato` packages, or equivalent); point `font_face()` at your own TTFs if building
-elsewhere. It does not regenerate `SUMMARY.html` or the print PDFs, which are built and
-maintained separately.
+elsewhere. It does not regenerate `SUMMARY.html`, which is currently maintained by hand.
+
+The two print PDFs are then built from `report.html` and `SUMMARY.html` as they stand
+by `build_pdf.py` (`pip install weasyprint`), with `print.css` applied only at render
+time — full-bleed canvas tint, A4 page size, and forced wrapping on wide code/data
+blocks and tables so nothing runs off the page edge. Run `build_report.py` first if the
+notebook has changed, then `build_pdf.py`, both from the repo root.
 
 ## Provenance
 
