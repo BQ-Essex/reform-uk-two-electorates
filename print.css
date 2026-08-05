@@ -4,11 +4,12 @@
 @page {
   size: A4;
   /* Generous, editorial margins -- real room for the footer to sit in, not squeezed
-     against content. Full-bleed canvas tint still reaches every physical edge: per
-     the CSS backgrounds spec, the root element's background paints the whole page
-     canvas, margins included, not just the content box -- so a real margin and an
-     edge-to-edge tint aren't in tension the way they'd first appear to be. */
+     against content. background here (not just on html/body) is what makes the tint
+     reach every physical edge: WeasyPrint paints the html/body canvas propagation
+     only over the page's content box, not its margin boxes, so without this the
+     margin area -- everything outside the text column -- renders plain white. */
   margin: 24mm 20mm 30mm 20mm;
+  background: #F6F5F1;
 
   @top-center {
     content: "ONE COALITION, TWO ELECTORATES";
