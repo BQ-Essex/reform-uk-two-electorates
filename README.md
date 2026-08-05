@@ -123,9 +123,13 @@ elsewhere. It does not regenerate `SUMMARY.html`, which is currently maintained 
 
 The two print PDFs are then built from `report.html` and `SUMMARY.html` as they stand
 by `build_pdf.py` (`pip install weasyprint`), with `print.css` applied only at render
-time — full-bleed canvas tint, A4 page size, and forced wrapping on wide code/data
-blocks and tables so nothing runs off the page edge. Run `build_report.py` first if the
-notebook has changed, then `build_pdf.py`, both from the repo root.
+time — full-bleed canvas tint, A4 page size, a running header/footer, and forced
+wrapping on wide code/data blocks and tables so nothing runs off the page edge.
+`report.html` additionally gets `print-report.css` layered on top, which opens each
+of the ten numbered sections on its own page — the convention for a report this
+length, as opposed to the five-page `SUMMARY.html`, which reads as one continuous
+flow. Run `build_report.py` first if the notebook has changed, then `build_pdf.py`,
+both from the repo root.
 
 ## Provenance
 

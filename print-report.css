@@ -1,0 +1,30 @@
+/* Report-only print addition, layered on top of print.css. Not applied to
+   SUMMARY.html: a five-page plain-language summary reads fine as one continuous
+   flow, but a 50+ page numbered report is the category where each major section
+   conventionally opens on its own page -- the way a thesis or a think-tank report
+   (an IFS or Resolution Foundation piece, for instance) breaks between chapters. */
+main > h2 {
+  break-before: page;
+}
+
+/* Three headings -- Dataset & EDA, Methods, Results -- are one-paragraph stubs
+   that exist only to group the numbered sections after them; unlike Introduction
+   and Conclusion they carry no content of their own (no h3s, a single sentence or
+   two). The blanket rule above forced each of these onto its own near-empty page
+   AND forced the numbered section right after it onto a second fresh page,
+   stranding the stub alone. Keeping the first numbered section glued to the stub
+   that introduces it restores what it visually is: a lead-in, not a chapter.
+   Structurally the three pairs aren't identically marked up (one has no <hr>
+   between the stub and what follows), hence two selectors. */
+main > h2 + p + h2,
+main > h2 + p + hr + h2 {
+  break-before: avoid-page;
+}
+
+/* The licence/appendix is short (well under a page) and already carries its own
+   strong divider (a heavy top rule) rather than relying on a page break for
+   separation -- that border is the original design's own way of marking it off.
+   Forcing break-before:page here stranded the tail of the References list alone
+   on a near-empty page for no gain, so the appendix is left to flow naturally
+   and land wherever there's room, same as any other section boundary marked by
+   a rule rather than a heading. */
