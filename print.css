@@ -1,20 +1,41 @@
 /* Print stylesheet applied only at PDF-render time, on top of report.html / SUMMARY.html
-   as they stand -- never edits those files. Full-bleed paper tint, wider column, tidy
-   page breaks, page numbers. */
+   as they stand -- never edits those files. */
 
 @page {
   size: A4;
-  margin: 0;
+  /* Generous, editorial margins -- real room for the footer to sit in, not squeezed
+     against content. Full-bleed canvas tint still reaches every physical edge: per
+     the CSS backgrounds spec, the root element's background paints the whole page
+     canvas, margins included, not just the content box -- so a real margin and an
+     edge-to-edge tint aren't in tension the way they'd first appear to be. */
+  margin: 24mm 20mm 30mm 20mm;
+
+  @top-center {
+    content: "ONE COALITION, TWO ELECTORATES";
+    font-family: 'LatoDoc', sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.12em;
+    color: #8a9095;
+  }
+  @bottom-center {
+    content: counter(page) " / " counter(pages);
+    font-family: 'LatoDoc', sans-serif;
+    font-size: 9px;
+    color: #5A6165;
+  }
 }
 
-html, body {
-  background: #F6F5F1 !important;
+/* No running header on the cover -- the title's already the whole page. */
+@page :first {
+  @top-center { content: none; }
 }
 
-/* Inset the content ourselves since @page margin is 0 (that's what lets the canvas
-   tint reach every edge instead of leaving a white margin strip). */
+html {
+  background: #F6F5F1;
+}
 body {
-  padding: 20mm 18mm 24mm 18mm;
+  background: transparent;
+  padding: 0;
 }
 
 /* Wider column for print than the 920px screen cap. */
@@ -30,6 +51,23 @@ body {
    continuing over a page break, which is normal in print. */
 .cover, .keyfinding, figure {
   break-inside: avoid;
+}
+
+/* Figures at full text width run tall (the biplot/scatter charts are near-square),
+   so a figure that doesn't fit in the remaining space at a page bottom gets pushed
+   whole to the next page (an <img> is an atomic box -- it was never going to split
+   mid-image either way), leaving a large blank gap behind it -- most visible in
+   SUMMARY.html, where two figures land back-to-back with little text between them.
+   Capping the printed height directly, rather than just the width, is what actually
+   shrinks that gap: it bounds how much vertical space a figure ever asks for, so it
+   fits in whatever's left on the current page far more often. Inset and centred also
+   reads as more deliberate editorial layout than a chart stretched edge to edge. */
+figure img {
+  max-height: 95mm;
+  width: auto;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
 }
 
 /* Weasyprint doesn't clip/scroll overflow-x like a browser -- wide monospace stdout
@@ -50,11 +88,11 @@ th, td {
 }
 
 /* A heading may never be the last thing on a page, and neither may the paragraph
-   immediately after it -- that pair is what was landing alone at a page bottom with
-   the section's real content pushed cold onto the next page. Deliberately one level
-   only: chaining further (heading -> para -> whatever comes after that) is what was
-   forcing large tables to jump whole onto the next page and leaving a big blank gap
-   on the one before it, which is a worse defect than the one this is fixing. */
+   immediately after it -- that pair landing alone at a page bottom, with the
+   section's real content starting cold on the next page, is the defect this fixes.
+   Deliberately one level only: chaining further (heading -> para -> whatever comes
+   after that) forces large tables to jump whole onto the next page and leaves a
+   big blank gap on the one before it, which is worse than the defect being fixed. */
 h2, h3 {
   break-after: avoid-page;
 }
@@ -65,14 +103,4 @@ h2 + p, h3 + p {
 p, li {
   orphans: 3;
   widows: 3;
-}
-
-/* Page numbers. */
-@page {
-  @bottom-center {
-    content: "One Coalition, Two Electorates — " counter(page) " / " counter(pages);
-    font-family: 'LatoDoc', sans-serif;
-    font-size: 9px;
-    color: #5A6165;
-  }
 }
