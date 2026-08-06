@@ -115,6 +115,12 @@ jupyter lab notebook/MA336_Project_Notebook.ipynb   # run from the repo root
 The two open datasets are already included, so the geographic-triangulation section runs
 out of the box; the core clustering additionally requires the two BSA files.
 
+Some IDEs (Positron, VS Code) set a notebook's working directory to the notebook's own
+folder rather than wherever you launched from, regardless of the `# run from the repo
+root` command above — if a `data/...` path 404s, that's why. Either point your IDE's
+notebook working-directory setting at the project root, or place a second copy of
+`data/` inside `notebook/` as a workaround.
+
 `report/report.html` is generated from the notebook by `build_report.py`
 (`pip install markdown`), so editing the notebook and re-running the script keeps the
 two in sync. It embeds Lora and Lato as base64 web fonts, reading the TTFs bundled in
@@ -123,9 +129,14 @@ so this runs unmodified on any platform. It does not regenerate `SUMMARY.html`, 
 is currently maintained by hand.
 
 The two print PDFs are then built from `report.html` and `SUMMARY.html` as they stand
-by `build_pdf.py` (`pip install weasyprint`), with `print.css` applied only at render
-time — full-bleed canvas tint, A4 page size, a running header/footer, and forced
-wrapping on wide code/data blocks and tables so nothing runs off the page edge.
+by `build_pdf.py` (`pip install weasyprint`). WeasyPrint's Python package alone isn't
+enough — it also needs Pango, a native library, installed at the OS level: on macOS,
+`brew install pango`; see [WeasyPrint's install docs](https://doc.courtbouillon.org/weasyprint/stable/first_steps.html#installation)
+for Linux/Windows. This step is only needed to rebuild the PDFs from source — the
+built PDFs are already committed in `report/`, so reading the report doesn't require
+it. `print.css` is applied only at render time — full-bleed canvas tint, A4 page
+size, a running header/footer, and forced wrapping on wide code/data blocks and
+tables so nothing runs off the page edge.
 `report.html` additionally gets `print-report.css` layered on top, which opens each
 of the ten numbered sections on its own page — the convention for a report this
 length, as opposed to the five-page `SUMMARY.html`, which reads as one continuous
