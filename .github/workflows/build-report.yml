@@ -1,0 +1,63 @@
+name: Build report
+
+# Proves the report/PDF pipeline reproduces on a clean machine, so that claim
+# doesn't rest on any one person's local Homebrew/Pango setup.
+#
+# Scope, deliberately: this builds report/report.html and the two print PDFs
+# from the notebook's *already-stored* cell outputs (via build_report.py and
+# build_pdf.py) -- it does not re-execute the notebook. The BSA microdata is
+# restricted under the UK Data Service End User Licence and can't be
+# redistributed, including into a CI runner, so full analysis re-execution
+# isn't something a public workflow can verify. That reproducibility check
+# was done locally, on the real data, and isn't what this workflow claims to
+# cover -- see the README's "Data availability & licence" section.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Pango (WeasyPrint's native dependency -- not a pip package)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpango-1.0-0 libharfbuzz0b libpangoft2-1.0-0 libharfbuzz-subset0
+
+      - name: Install Python dependencies
+        run: pip install markdown weasyprint
+
+      - name: Regenerate report.html from the notebook
+        run: python build_report.py
+
+      - name: Build the print PDFs
+        run: python build_pdf.py
+
+      - name: Check report.html matches what's committed
+        run: |
+          if ! git diff --exit-code -- report/report.html; then
+            echo "::error::report.html regenerated from the notebook differs from what's committed. Run 'python build_report.py' locally and commit the result."
+            exit 1
+          fi
+        # The two PDFs aren't compared here: WeasyPrint embeds a build
+        # timestamp in the PDF metadata, so a byte diff would fail on every
+        # run even when the rendered content is identical. Successfully
+        # building them above is the actual signal.
+
+      - name: Upload built PDFs as workflow artefacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-pdfs
+          path: |
+            report/One_Coalition_Two_Electorates_report.pdf
+            report/One_Coalition_Two_Electorates_summary.pdf

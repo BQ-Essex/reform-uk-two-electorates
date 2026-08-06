@@ -6,6 +6,7 @@
 ![Jupyter](https://img.shields.io/badge/Jupyter-notebook-orange)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-PCA%20·%20K--means%20·%20trees-F7931E)
 ![License: MIT](https://img.shields.io/badge/Code%20License-MIT-green)
+[![Build report](https://github.com/BQ-Essex/reform-uk-two-electorates/actions/workflows/build-report.yml/badge.svg)](https://github.com/BQ-Essex/reform-uk-two-electorates/actions/workflows/build-report.yml)
 
 A multi-method, multi-dataset machine-learning study of whether Reform UK's 2024
 electorate is a single bloc or several.
@@ -142,6 +143,13 @@ of the ten numbered sections on its own page — the convention for a report thi
 length, as opposed to the five-page `SUMMARY.html`, which reads as one continuous
 flow. Run `build_report.py` first if the notebook has changed, then `build_pdf.py`,
 both from the repo root.
+
+A [GitHub Actions workflow](.github/workflows/build-report.yml) runs both scripts on
+every push, on a clean Ubuntu runner, and fails if the regenerated `report.html`
+doesn't match what's committed — so this pipeline reproducing isn't a claim resting on
+any one person's local setup. It builds from the notebook's already-stored cell
+outputs rather than re-executing it, since the restricted BSA microdata can't be
+present in a public runner; see the note at the top of the workflow file.
 
 ## Provenance
 
