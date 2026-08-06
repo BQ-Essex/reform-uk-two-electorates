@@ -98,6 +98,21 @@ table {
 }
 th, td {
   white-space: normal !important;
+  /* white-space:normal alone lets a cell wrap at spaces, but pandas-derived column
+     headers are snake_case (reform_vote_share_2024GE_BSA) -- one unbroken token
+     with no space for a browser to wrap at, so it overflowed the column, the
+     table, and the page edge regardless. This forces a break inside the token
+     itself once nothing shorter is available. */
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+/* table.dataframe already gets width:100% from report.html's own CSS, but on a
+   table-layout:auto table (the default) that width is only a hint -- the renderer
+   still expands a column past it to fit an unbreakable token first. table-layout:
+   fixed makes the 100% binding, so overflow-wrap above actually has an width to
+   wrap within instead of being overridden by the column's own sizing pass. */
+table.dataframe {
+  table-layout: fixed;
 }
 
 /* A heading may never be the last thing on a page, and neither may the paragraph

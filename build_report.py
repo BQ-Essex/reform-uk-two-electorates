@@ -55,7 +55,16 @@ def render_outputs(cell):
             if 'text/html' in data:                       # a dataframe table
                 tbl="".join(data['text/html'])
                 tbl=re.sub(r'border="\d+"','',tbl)
-                tbl=re.sub(r'>(-?\d+\.\d+)<', lambda mm: '>'+format(round(float(mm.group(1)),2),'g')+'<', tbl); parts.append(f'<div class="tablewrap">{tbl}</div>')
+                tbl=re.sub(r'>(-?\d+\.\d+)<', lambda mm: '>'+format(round(float(mm.group(1)),2),'g')+'<', tbl)
+                # Column headers are pandas column names -- often long snake_case
+                # identifiers (reform_vote_share_2024GE_BSA) with no space for a
+                # renderer to wrap at, which ran the widest tables off the page
+                # edge in print. <wbr> after each underscore gives the renderer a
+                # clean place to break -- invisible, no visual change on screen,
+                # where headers have room to sit on one line anyway.
+                tbl=re.sub(r'(<th[^>]*>)([^<]*)(</th>)',
+                           lambda mm: mm.group(1)+mm.group(2).replace('_','_<wbr>')+mm.group(3), tbl)
+                parts.append(f'<div class="tablewrap">{tbl}</div>')
             # png handled separately (we inject our own styled figures)
         elif ot=='stream' and o.get('name')=='stdout':
             txt="".join(o.get('text',[])).rstrip()
