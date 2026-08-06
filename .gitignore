@@ -4,6 +4,10 @@ data/*.tab
 p19056-bsa24-archive*
 bsa14_final*
 
+# Local convenience copy of data/ inside notebook/, worked around an IDE cwd
+# quirk (see README) — not part of the repo's actual structure, never commit
+notebook/data/
+
 # Python
 __pycache__/
 *.py[cod]
