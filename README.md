@@ -27,6 +27,7 @@ electorate is a single bloc or several.
 | [`report/SUMMARY.md`](report/SUMMARY.md) | A short, code-free reader's version—prose, figures and headline numbers. |
 | [`figures/`](figures/) | The eleven figures exported from the analysis. |
 | [`data/`](data/) | The two open datasets, plus a README on obtaining the restricted survey data. |
+| [`fonts/`](fonts/) | Lora and Lato TTFs, embedded by `build_report.py` into `report.html`. |
 
 ## The question
 
@@ -116,10 +117,10 @@ out of the box; the core clustering additionally requires the two BSA files.
 
 `report/report.html` is generated from the notebook by `build_report.py`
 (`pip install markdown`), so editing the notebook and re-running the script keeps the
-two in sync. It embeds Lora and Lato as base64 web fonts, reading them from the system
-font paths used in this project's Linux build environment (the `fonts-google-lora` /
-`fonts-lato` packages, or equivalent); point `font_face()` at your own TTFs if building
-elsewhere. It does not regenerate `SUMMARY.html`, which is currently maintained by hand.
+two in sync. It embeds Lora and Lato as base64 web fonts, reading the TTFs bundled in
+[`fonts/`](fonts/) (SIL Open Font License — see [`fonts/README.md`](fonts/README.md)),
+so this runs unmodified on any platform. It does not regenerate `SUMMARY.html`, which
+is currently maintained by hand.
 
 The two print PDFs are then built from `report.html` and `SUMMARY.html` as they stand
 by `build_pdf.py` (`pip install weasyprint`), with `print.css` applied only at render

@@ -13,13 +13,14 @@ def font_face(family,path,weight='400',style='normal'):
     return (f"@font-face{{font-family:'{family}';font-style:{style};font-weight:{weight};"
             f"font-display:swap;src:url(data:font/ttf;base64,{b64(path)}) format('truetype');}}")
 
+FONTDIR=REPO+'/fonts'
 FONTS=""
-FONTS+=font_face('Lora','/usr/share/fonts/truetype/google-fonts/Lora-Variable.ttf','400 700','normal')
-FONTS+=font_face('Lora','/usr/share/fonts/truetype/google-fonts/Lora-Italic-Variable.ttf','400 700','italic')
-FONTS+=font_face('LatoDoc','/usr/share/fonts/truetype/lato/Lato-Regular.ttf','400','normal')
-FONTS+=font_face('LatoDoc','/usr/share/fonts/truetype/lato/Lato-Italic.ttf','400','italic')
-FONTS+=font_face('LatoDoc','/usr/share/fonts/truetype/lato/Lato-Bold.ttf','700','normal')
-FONTS+=font_face('LatoDoc','/usr/share/fonts/truetype/lato/Lato-Light.ttf','300','normal')
+FONTS+=font_face('Lora',FONTDIR+'/Lora-Variable.ttf','400 700','normal')
+FONTS+=font_face('Lora',FONTDIR+'/Lora-Italic-Variable.ttf','400 700','italic')
+FONTS+=font_face('LatoDoc',FONTDIR+'/Lato-Regular.ttf','400','normal')
+FONTS+=font_face('LatoDoc',FONTDIR+'/Lato-Italic.ttf','400','italic')
+FONTS+=font_face('LatoDoc',FONTDIR+'/Lato-Bold.ttf','700','normal')
+FONTS+=font_face('LatoDoc',FONTDIR+'/Lato-Light.ttf','300','normal')
 
 GRAIN_SVG=("<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'>"
            "<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/>"
