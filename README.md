@@ -15,7 +15,7 @@ electorate is a single bloc or several.
 > split almost in half—**55%** in a conventional right-authoritarian group and
 > **41%** in an **authoritarian-left** group that is pro-redistribution, left-leaning,
 > and disproportionately reliant on benefits, sitting inside a party that campaigned on
-> ~£90bn of tax cuts. Projected onto 2014 UKIP identifiers, the "left-behind" cluster is
+> tax cuts it costed at ~£90bn **a year**. Projected onto 2014 UKIP identifiers, the "left-behind" cluster is
 > *larger* still (59%), so the pattern predates Reform by a decade.
 
 ## What's here

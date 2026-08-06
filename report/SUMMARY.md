@@ -51,7 +51,8 @@ Clustered on political attitudes alone, Reform's voters split almost in half:
   strongly pro-redistribution and left-leaning, and with a majority receiving benefits.
 
 That second group is the cross-pressured one. Their economic instincts sit in real tension with the
-party they voted for—Reform campaigned in 2024 on roughly £90bn of tax cuts. But "economically left"
+party they voted for—Reform campaigned in 2024 on tax cuts it costed itself at nearly £90bn a year, a figure
+the IFS reported and judged an underestimate (Emmerson, Joyce and Miller, 2024). But "economically left"
 undersells what's actually going on. This group is pro-redistribution *and* about as sceptical of
 welfare claimants as the conventional right-authoritarian group *and* nearly as anti-immigration
 (around four in five, on the relevant split-ballot items, rate immigration bad for the economy). It's

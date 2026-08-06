@@ -165,7 +165,7 @@ HTML=f'''<!DOCTYPE html><html lang="en"><head>
 <p class="standfirst">{sub}</p>
 <div class="meta"><span><b>Bradley Quinlan</b></span><span>University of Essex</span><span>MA336 &middot; Artificial Intelligence and Machine Learning with Applications</span><span>British Social Attitudes 2014 &amp; 2024</span></div>
 <div class="keyfinding"><p class="lab">Headline finding</p>
-<p>Clustered on political attitudes alone, Reform’s 2024 voters divide almost in half—<b>55.0%</b> in a conventional right-authoritarian group and <b>41.0%</b> in an authoritarian-left group that is pro-redistribution and disproportionately benefit-reliant, sitting inside a party that campaigned on roughly £90bn of tax cuts. Projected onto 2014 UKIP identifiers the left-behind cluster is larger still, so the pattern predates Reform by a decade.</p></div>
+<p>Clustered on political attitudes alone, Reform’s 2024 voters divide almost in half—<b>55.0%</b> in a conventional right-authoritarian group and <b>41.0%</b> in an authoritarian-left group that is pro-redistribution and disproportionately benefit-reliant, sitting inside a party that campaigned on tax cuts it costed at nearly £90bn a year. Projected onto 2014 UKIP identifiers the left-behind cluster is larger still, so the pattern predates Reform by a decade.</p></div>
 </header>
 <main>{BODY}</main>
 <section class="appendix">{APPENDIX}</section>
