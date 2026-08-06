@@ -1,6 +1,6 @@
 # One Coalition, Two Electorates: Cross-Pressure in the Reform UK Vote
 
-**Bradley Quinlan**, 2026
+**Bradley Quinlan**, 2026 · MA336 *Artificial Intelligence and Machine Learning with Applications*, University of Essex
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![Jupyter](https://img.shields.io/badge/Jupyter-notebook-orange)
@@ -158,8 +158,9 @@ present in a public runner; see the note at the top of the workflow file.
 
 ## Provenance
 
-This analysis began as a University of Essex MA336 machine-learning module project and was
-subsequently revised and extended for standalone release: the survey coding was corrected,
+This analysis began as a project for MA336 *Artificial Intelligence and Machine Learning with
+Applications* at the University of Essex, and was subsequently revised and extended for
+standalone release: the survey coding was corrected,
 every figure recomputed from source, a second (linear-bottleneck) autoencoder and a battery of
 robustness checks added, and the longitudinal claim re-tested with a difference-in-differences.
 
