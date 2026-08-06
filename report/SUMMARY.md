@@ -16,8 +16,8 @@ There's a comfortable shorthand in political commentary: "the Reform voter." I w
 whether that single label hides more than one kind of person.
 
 The starting idea is **cross-pressure**—a classic in electoral sociology. A voter can hold
-attitudes that pull against their own vote. Ford and Goodwin describe this kind of base as
-"left behind": socially hardline, but economically dependent on the state—a claim others have since contested (Evans and Mellon) or reframed around identity and education (Sobolewska and Ford, in *Brexitland*). Rather than assert
+attitudes that pull against their own vote. Ford and Goodwin (2014) describe this kind of base as
+"left behind": socially hardline, but economically dependent on the state—a claim others have since contested (Evans and Mellon, 2016) or reframed around identity and education (Sobolewska and Ford, 2020, in *Brexitland*). Rather than assert
 the tension exists, I wanted to test whether it actually shows up *inside* Reform's 2024 voters—using machine learning, and using several methods so they could check each other.
 
 ## Where the data made me change course
@@ -58,7 +58,7 @@ welfare claimants as the conventional right-authoritarian group *and* nearly as 
 (around four in five, on the relevant split-ballot items, rate immigration bad for the economy). It's
 their *benefit reliance*, not sympathy for claimants, that makes the "left-behind" label concrete.
 Redistribution to an implied in-group, alongside hostility to an out-group's claim on the same welfare
-state, is what political scientists call **welfare chauvinism** (Andersen & Bjørklund, 1990)—a more
+state, is what political scientists call **welfare chauvinism** (Andersen and Bjørklund, 1990)—a more
 precise description than "a left-wing electorate inside a right-wing party."
 
 ![The two attitudinal axes: PC1 (left–right fusion) and PC2 (authoritarian-left vs libertarian-right)](../figures/fig03_pca-biplot.png)
@@ -89,6 +89,28 @@ I've kept the claims honest. This is **descriptive**, the subgroups are small, a
 supervised and unsupervised, and across ten years of data, the same structure keeps surfacing: a single
 "Reform voter" label hides two quite different electorates, and the cross-pressured half is real,
 robust, and at least a decade old.
+
+---
+
+## Works cited
+
+Andersen, J.G. and Bjørklund, T. (1990) 'Structural Changes and New Cleavages: the Progress Parties
+in Denmark and Norway', *Acta Sociologica*, 33(3), pp. 195–217.
+
+Emmerson, C., Joyce, R. and Miller, H. (2024) *Reform UK manifesto: a reaction*. London: Institute
+for Fiscal Studies. Available at: <https://ifs.org.uk/articles/reform-uk-manifesto-reaction>
+(Accessed: 6 August 2026).
+
+Evans, G. and Mellon, J. (2016) 'Working Class Votes and Conservative Losses: Solving the UKIP
+Puzzle', *Parliamentary Affairs*, 69(2), pp. 464–479.
+
+Ford, R. and Goodwin, M.J. (2014) *Revolt on the Right: Explaining Support for the Radical Right in
+Britain*. Abingdon: Routledge.
+
+Sobolewska, M. and Ford, R. (2020) *Brexitland: Identity, Diversity and the Reshaping of British
+Politics*. Cambridge: Cambridge University Press.
+
+The full reference list is in [`report.html`](report.html).
 
 ---
 
