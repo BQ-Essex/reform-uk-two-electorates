@@ -4,10 +4,10 @@
 
 | File | Source | Licence |
 |------|--------|---------|
-| `IoD2019_LA_upper_tier.xlsx` | English Indices of Deprivation 2019 — Ministry of Housing, Communities & Local Government | Open Government Licence v3.0 |
-| `LEH-2025-results-HoC.xlsx` | 2025 Local Elections Handbook and Dataset — House of Commons Library (Rallings, Thrasher & Bunting, Elections Centre, University of Exeter) | Open Parliament Licence |
+| `IoD2019_LA_upper_tier.xlsx` | English Indices of Deprivation 2019—Ministry of Housing, Communities & Local Government | Open Government Licence v3.0 |
+| `LEH-2025-results-HoC.xlsx` | 2025 Local Elections Handbook and Dataset—House of Commons Library (Rallings, Thrasher & Bunting, Elections Centre, University of Exeter) | Open Parliament Licence |
 
-## NOT included (restricted — you must obtain these yourself)
+## NOT included (restricted—you must obtain these yourself)
 
 The British Social Attitudes microdata is supplied under the **UK Data Service End User
 Licence**, which prohibits redistribution. It is free to download after registering for a
@@ -25,8 +25,18 @@ UK Data Service account.
 3. Download the **tab-delimited** version and accept the End User Licence.
 4. Place the two `.tab` files in this `data/` folder using the exact filenames in the table.
 
-Once both files are present, the notebook runs end to end. The filenames in the notebook may
-need to match whatever the download provides — adjust the `DATA_PATH` / `read_csv` lines if so.
+Once both files are present, the notebook runs end to end.
 
-> Note: the file `bsa14_final.tab` in the original project was a locally prepared extract of
-> SN 7809. Obtain SN 7809 from the UK Data Service and adapt as needed.
+### Two things to expect when you do
+
+**Filenames.** The notebook reads the two paths exactly as spelled in the table above.
+`bsa14_final.tab` is simply the SN 7809 tab-delimited file renamed—it is the full released
+dataset (2,878 respondents × 726 variables), not a locally prepared extract. Either rename
+your download to match, or adjust the `read_csv` lines in the notebook.
+
+**Variable naming differs between the two years, and the notebook relies on that.** The 2014
+file spells the attitude scales in lower case (`libauth`, `leftrigh`, `welfare2`, `redistrb`)
+where 2024 uses initial capitals (`Libauth`, `Welfare2`, `Redistrb`). `TaxSpend` is
+capitalised in both. In 2014, `libauth`, `leftrigh` and `welfare2` also arrive as *strings*
+rather than numerics, with `' '` for "no self-completion" and `'9'` for missing—Section 10
+coerces them explicitly. These are properties of the released files, not of this project.

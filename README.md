@@ -118,35 +118,40 @@ out of the box; the core clustering additionally requires the two BSA files.
 
 Some IDEs (Positron, VS Code) set a notebook's working directory to the notebook's own
 folder rather than wherever you launched from, regardless of the `# run from the repo
-root` command above — if a `data/...` path 404s, that's why. Either point your IDE's
+root` command above—if a `data/...` path 404s, that's why. Either point your IDE's
 notebook working-directory setting at the project root, or place a second copy of
 `data/` inside `notebook/` as a workaround.
 
 `report/report.html` is generated from the notebook by `build_report.py`
 (`pip install markdown`), so editing the notebook and re-running the script keeps the
 two in sync. It embeds Lora and Lato as base64 web fonts, reading the TTFs bundled in
-[`fonts/`](fonts/) (SIL Open Font License — see [`fonts/README.md`](fonts/README.md)),
-so this runs unmodified on any platform. It does not regenerate `SUMMARY.html`, which
-is currently maintained by hand.
+[`fonts/`](fonts/) (SIL Open Font License—see [`fonts/README.md`](fonts/README.md)),
+so this runs unmodified on any platform. The notebook registers the same bundled TTFs
+for its own figures, so a top-to-bottom run reproduces the report's typography rather
+than falling back to a default face.
+
+It does not regenerate `SUMMARY.html`, which is maintained by hand and embeds its own
+copy of each figure. Changing a figure therefore means updating `SUMMARY.html`
+too—`build_report.py` will not do it for you, and CI only diffs `report.html`.
 
 The two print PDFs are then built from `report.html` and `SUMMARY.html` as they stand
 by `build_pdf.py` (`pip install weasyprint`). WeasyPrint's Python package alone isn't
-enough — it also needs Pango, a native library, installed at the OS level: on macOS,
+enough—it also needs Pango, a native library, installed at the OS level: on macOS,
 `brew install pango`; see [WeasyPrint's install docs](https://doc.courtbouillon.org/weasyprint/stable/first_steps.html#installation)
-for Linux/Windows. This step is only needed to rebuild the PDFs from source — the
+for Linux/Windows. This step is only needed to rebuild the PDFs from source—the
 built PDFs are already committed in `report/`, so reading the report doesn't require
-it. `print.css` is applied only at render time — full-bleed canvas tint, A4 page
+it. `print.css` is applied only at render time—full-bleed canvas tint, A4 page
 size, a running header/footer, and forced wrapping on wide code/data blocks and
 tables so nothing runs off the page edge.
 `report.html` additionally gets `print-report.css` layered on top, which opens each
-of the ten numbered sections on its own page — the convention for a report this
+of the ten numbered sections on its own page—the convention for a report this
 length, as opposed to the five-page `SUMMARY.html`, which reads as one continuous
 flow. Run `build_report.py` first if the notebook has changed, then `build_pdf.py`,
 both from the repo root.
 
 A [GitHub Actions workflow](.github/workflows/build-report.yml) runs both scripts on
 every push, on a clean Ubuntu runner, and fails if the regenerated `report.html`
-doesn't match what's committed — so this pipeline reproducing isn't a claim resting on
+doesn't match what's committed—so this pipeline reproducing isn't a claim resting on
 any one person's local setup. It builds from the notebook's already-stored cell
 outputs rather than re-executing it, since the restricted BSA microdata can't be
 present in a public runner; see the note at the top of the workflow file.
