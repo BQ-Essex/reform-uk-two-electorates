@@ -14,7 +14,7 @@ electorate is a single bloc or several.
 > **Headline finding:** clustered on political attitudes alone, Reform's 2024 voters
 > split almost in half—**55%** in a conventional right-authoritarian group and
 > **41%** in an **authoritarian-left** group that is pro-redistribution, left-leaning,
-> and disproportionately reliant on benefits, sitting inside a party that campaigned on
+> and markedly the least credentialled of the three, sitting inside a party that campaigned on
 > tax cuts it costed at **~£90bn a year**. Projected onto 2014 UKIP identifiers, the
 > "left-behind" cluster is *larger* still (59%), so the pattern predates Reform by a decade.
 
@@ -83,7 +83,10 @@ rather than hidden:
 The claims here are deliberately **descriptive**, not predictive. The Reform subsample is
 modest, the clustering is unweighted (though reweighting to BSA's published weights leaves the split essentially unchanged, at 52/44/4), and some subgroups are small—so these are structural
 patterns in attitudes, not turnout forecasts. The "welfare-reliant" character of the second
-cluster is a *compositional* fact (53% benefit receipt), not a claim about welfare *attitudes*—on
+cluster is a *compositional* fact, and a deliberately bounded one: `Anybn3` counts the state pension
+and other age-related transfers, so the headline 53% largely tracks age, the two Reform clusters are
+indistinguishable above 65, and the working-age gap (38% against 26%) is suggestive at p = 0.079
+rather than established (Section 7a). It is not a claim about welfare *attitudes* either—on
 the welfare-attitudes scale itself, the second cluster is about as sceptical of claimants as the
 conventional right-authoritarian cluster is. That combination (pro-redistribution, welfare-sceptical,
 anti-immigration) is what the report names *welfare chauvinism* rather than describing the cluster

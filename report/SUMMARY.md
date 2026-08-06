@@ -48,15 +48,19 @@ Clustered on political attitudes alone, Reform's voters split almost in half:
 
 - **55%** sit in a conventional **right-authoritarian** group.
 - **41%** sit in an **authoritarian-left** group—socially hardline, but economically left:
-  strongly pro-redistribution and left-leaning, and with a majority receiving benefits.
+  strongly pro-redistribution and left-leaning, and markedly the least credentialled of the three.
 
 That second group is the cross-pressured one. Their economic instincts sit in real tension with the
 party they voted for—Reform campaigned in 2024 on tax cuts it costed itself at nearly £90bn a year, a figure
 the IFS reported and judged an underestimate (Emmerson, Joyce and Miller, 2024). But "economically left"
 undersells what's actually going on. This group is pro-redistribution *and* about as sceptical of
 welfare claimants as the conventional right-authoritarian group *and* nearly as anti-immigration
-(around four in five, on the relevant split-ballot items, rate immigration bad for the economy). It's
-their *benefit reliance*, not sympathy for claimants, that makes the "left-behind" label concrete.
+(around four in five, on the relevant split-ballot items, rate immigration bad for the economy). What
+makes the "left-behind" label concrete is education, not benefits: this group is much the least
+qualified of the three (31% hold a degree, against 45% and 64%), and that gap holds even after
+adjusting for social class and household income. I had expected benefit receipt to do that work, and
+checked it properly rather than assume—the survey's benefit question counts the state pension, so most
+of the apparent gap is really age. Above 65 the two Reform groups are indistinguishable.
 Redistribution to an implied in-group, alongside hostility to an out-group's claim on the same welfare
 state, is what political scientists call **welfare chauvinism** (Andersen and Bjørklund, 1990)—a more
 precise description than "a left-wing electorate inside a right-wing party."
