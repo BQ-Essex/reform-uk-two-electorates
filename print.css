@@ -66,6 +66,21 @@ body::before {
   break-inside: avoid;
 }
 
+/* Tables themselves are still allowed to split across a page (see above), but a
+   single ROW must not be: without this, WeasyPrint can render a row's label cell
+   on one page and its data cells on the next -- confirmed happening to two rows
+   in the real report (a long row label wrapped across the page boundary, so the
+   fragment before the break kept the data and the fragment after it looked like
+   an empty new row). thead as table-header-group repeats the column-header row
+   at the top of the continuation page, so a table that does carry over stays
+   readable without flipping back to see what the columns mean. */
+tr {
+  break-inside: avoid;
+}
+thead {
+  display: table-header-group;
+}
+
 /* Figures at full text width run tall (the biplot/scatter charts are near-square),
    so a figure that doesn't fit in the remaining space at a page bottom gets pushed
    whole to the next page (an <img> is an atomic box -- it was never going to split
