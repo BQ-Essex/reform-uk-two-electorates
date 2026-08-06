@@ -82,11 +82,15 @@ rather than hidden:
 
 The claims here are deliberately **descriptive**, not predictive. The Reform subsample is
 modest, the clustering is unweighted (though reweighting to BSA's published weights leaves the split essentially unchanged, at 52/44/4), and some subgroups are small—so these are structural
-patterns in attitudes, not turnout forecasts. The "welfare-reliant" character of the second
-cluster is a *compositional* fact, and a deliberately bounded one: `Anybn3` counts the state pension
-and other age-related transfers, so the headline 53% largely tracks age, the two Reform clusters are
+patterns in attitudes, not turnout forecasts. The *compositional* claims about the second cluster are
+tested rather than assumed in Section 7a, and they do not survive equally. The income gap holds: its
+Reform voters sit a full household-income band below the conventional-right group's (median band 2
+against 3, p = 0.013). The benefit gap does not: `Anybn3` counts the state pension and other
+age-related transfers, so the headline 53% largely tracks age, the two Reform clusters are
 indistinguishable above 65, and the working-age gap (38% against 26%) is suggestive at p = 0.079
-rather than established (Section 7a). It is not a claim about welfare *attitudes* either—on
+rather than established. Benefit receipt is accordingly the weakest claim in the report, and the
+"left-behind" reading rests on income and education instead. Nor is it a claim about welfare
+*attitudes*—on
 the welfare-attitudes scale itself, the second cluster is about as sceptical of claimants as the
 conventional right-authoritarian cluster is. That combination (pro-redistribution, welfare-sceptical,
 anti-immigration) is what the report names *welfare chauvinism* rather than describing the cluster

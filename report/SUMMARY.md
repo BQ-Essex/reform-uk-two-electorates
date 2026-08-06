@@ -56,9 +56,9 @@ the IFS reported and judged an underestimate (Emmerson, Joyce and Miller, 2024).
 undersells what's actually going on. This group is pro-redistribution *and* about as sceptical of
 welfare claimants as the conventional right-authoritarian group *and* nearly as anti-immigration
 (around four in five, on the relevant split-ballot items, rate immigration bad for the economy). What
-makes the "left-behind" label concrete is education, not benefits: this group is much the least
-qualified of the three (31% hold a degree, against 45% and 64%), and that gap holds even after
-adjusting for social class and household income. I had expected benefit receipt to do that work, and
+makes the "left-behind" label concrete is income and education, not benefits: this group sits a full
+household-income band below the conventional-right group, and is much the least qualified of the three
+(31% hold a degree, against 45% and 64%)—a gap that holds even after adjusting for social class and income. I had expected benefit receipt to do that work, and
 checked it properly rather than assume—the survey's benefit question counts the state pension, so most
 of the apparent gap is really age. Above 65 the two Reform groups are indistinguishable.
 Redistribution to an implied in-group, alongside hostility to an out-group's claim on the same welfare
