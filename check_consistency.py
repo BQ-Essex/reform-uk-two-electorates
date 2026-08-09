@@ -23,7 +23,7 @@ inherit the blind spots of whoever wrote the list. So SURFACES ARE DISCOVERED, N
 LISTED. This script globs every text-bearing file in the repo and scans all of them.
 Adding a new file type or a new build script cannot silently escape it.
 """
-import argparse, json, os, re, subprocess, sys
+import argparse, json, os, re, shutil, subprocess, sys
 
 REPO = os.path.dirname(os.path.abspath(__file__))
 SKIP_DIRS = {'.git', 'figures', 'fonts', 'data', '__pycache__', '.ipynb_checkpoints'}
@@ -146,6 +146,13 @@ def check_numbers(files):
 #    straight apostrophe in the project on the summary's cover.
 # --------------------------------------------------------------------------------
 def check_typography(pdfs):
+    # pdftotext comes from poppler-utils. Its absence is an environment gap, not a
+    # defect in the document -- this check degrades to a warning rather than taking
+    # the whole run down with a traceback. (It did exactly that on the first CI run
+    # after this script was added: the workflow installed Pango but not poppler.)
+    if not shutil.which('pdftotext'):
+        warn("typography", "pdftotext not found (install poppler-utils); skipping")
+        return
     for pdf in pdfs:
         if not os.path.exists(pdf):
             continue
