@@ -46,6 +46,11 @@ jobs:
       - name: Build the print PDFs
         run: python build_pdf.py
 
+      - name: Repo-wide consistency checks
+        run: |
+          pip install pdfplumber
+          python check_consistency.py
+
       - name: Check the generated HTML matches what's committed
         run: |
           if ! git diff --exit-code -- report/report.html report/SUMMARY.html; then

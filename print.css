@@ -162,8 +162,14 @@ table.dataframe {
 h2, h3 {
   break-after: avoid-page;
 }
+/* NOT `h2 + p { break-after: avoid }`. Keeping a heading with its first paragraph is
+   `break-after: avoid` on the *heading*, which is the rule above. Adding it to the
+   paragraph as well glues that paragraph to whatever comes *after* it -- and when the
+   next block is a full-width figure, the paragraph's tail has to travel with the
+   figure to the following page, stranding the opening lines behind 40% whitespace.
+   Keeping the paragraph with the heading above it is what was actually wanted: */
 h2 + p, h3 + p {
-  break-after: avoid-page;
+  break-before: avoid-page;
 }
 
 p, li {

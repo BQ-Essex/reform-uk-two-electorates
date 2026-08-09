@@ -158,6 +158,15 @@ length, as opposed to the five-page `SUMMARY.html`, which reads as one continuou
 flow. Run `build_report.py` first if the notebook has changed, then `build_pdf.py`,
 both from the repo root.
 
+`check_consistency.py` runs a set of repo-wide checks: that no retired or bounded
+claim has been restated anywhere, that the built PDFs carry no stray straight quotes
+or spaced em dashes, that the generated HTML matches what the build scripts produce,
+and that no page of either PDF is mostly empty. It discovers the files to scan by
+walking the repo rather than working from a list, because the two claims that survived
+longest in this project were both living somewhere no hand-written list included — one
+in a build script, one in a figure's baked-in title. Its own limits are documented at
+the top of the file.
+
 A [GitHub Actions workflow](.github/workflows/build-report.yml) runs both scripts on
 every push, on a clean Ubuntu runner, and fails if the regenerated `report.html`
 doesn't match what's committed—so this pipeline reproducing isn't a claim resting on
