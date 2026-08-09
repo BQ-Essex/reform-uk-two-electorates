@@ -20,15 +20,41 @@ electorate is a single bloc or several.
 
 ## What's here
 
+Everything in the repository, grouped by what it is for.
+
+**The work**
+
 | Path | What it is |
 |------|-----------|
-| [`notebook/`](notebook/) | The full analysis notebook—code, narrative and figures inline. This is the primary artefact. |
-| [`report/report.html`](report/) | The complete write-up rendered for reading—prose, figures and tables, with the code kept in the notebook. |
-| [`report/SUMMARY.html`](report/SUMMARY.html) | The short summary, generated from `SUMMARY.md` by `build_summary.py`. |
-| [`report/SUMMARY.md`](report/SUMMARY.md) | The code-free reader's version—the literature, the finding, and the limits, in plain language. Source for `SUMMARY.html`. |
+| [`notebook/`](notebook/) | The full analysis—code, narrative and figures inline. This is the primary artefact. |
+| [`report/report.html`](report/) | The complete write-up rendered for reading, with the code kept in the notebook. |
+| [`report/SUMMARY.md`](report/SUMMARY.md) | The code-free reader's version—the literature, the finding, and the limits, in plain language. |
+| [`report/SUMMARY.html`](report/SUMMARY.html) | The same, generated from `SUMMARY.md` and styled to match the report. |
+| `report/*.pdf` | Print versions of both, built from the HTML. |
 | [`figures/`](figures/) | The eleven figures exported from the analysis. |
 | [`data/`](data/) | The two open datasets, plus a README on obtaining the restricted survey data. |
-| [`fonts/`](fonts/) | Lora and Lato TTFs, embedded by `build_report.py` into `report.html`. |
+
+**Building it** — you only need these to rebuild the documents from source; reading the report requires none of them.
+
+| Path | What it is |
+|------|-----------|
+| `build_report.py` | Generates `report.html` from the notebook. |
+| `build_summary.py` | Generates `SUMMARY.html` from `SUMMARY.md`. |
+| `report_style.py` | The house stylesheet both builders import, so the two documents cannot drift apart. |
+| `build_pdf.py` | Renders both HTML files to print PDFs. |
+| `print.css`, `print-report.css` | Applied at PDF render time only—page size, running header, section-per-page. |
+| [`fonts/`](fonts/) | Lora and Lato TTFs, embedded into the HTML so it renders identically anywhere. |
+| `requirements.txt` | Python dependencies for the analysis. |
+
+**Checking it**
+
+| Path | What it is |
+|------|-----------|
+| `check_consistency.py` | Repo-wide checks: retired claims, typography, reproducibility, page layout. See below. |
+| [`.github/workflows/`](.github/workflows/) | CI: rebuilds both documents on a clean runner, runs the checks, and fails if the committed HTML has drifted. |
+
+`LICENSE` (MIT, for the code) and `.gitignore` are the only other files, and the latter is what keeps the restricted survey microdata out of the repository.
+
 
 ## The question
 
