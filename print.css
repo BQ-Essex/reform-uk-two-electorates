@@ -137,6 +137,15 @@ table:not(.dataframe) td {
   word-break: normal;
   text-align: left;
 }
+/* Narrative tables are short -- the four-row literature table and the five-row
+   structure table -- and splitting them is pure loss: one row is orphaned on the
+   previous page and the repeating <thead> (right for a long dataframe, wrong here)
+   restates the column headers for it. Both were splitting. Kept whole; the
+   dataframes, which can run long, still break normally. */
+table:not(.dataframe) {
+  break-inside: avoid;
+}
+
 table:not(.dataframe) th:first-child,
 table:not(.dataframe) td:first-child {
   white-space: nowrap;

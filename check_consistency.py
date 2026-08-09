@@ -207,6 +207,38 @@ def check_layout(pdfs, section_break_ok=()):
 
 
 # --------------------------------------------------------------------------------
+# 4b. Tables split across a page break.
+#     A short narrative table that straddles a page orphans a row and, because the
+#     <thead> repeats, restates its column headers for that single row. The tell is
+#     the same header text appearing on two consecutive pages, which is cheap to
+#     detect and has no false positives worth the name.
+# --------------------------------------------------------------------------------
+def check_split_tables(pdfs, headers=("POSITION CORE CLAIM", "SECTION CONTENTS")):
+    # pdfplumber, not pdftotext. These headers carry CSS letter-spacing, and pdftotext
+    # renders spaced glyphs as separate characters ("S E C T I O N"), so a literal
+    # search finds nothing -- the first version of this check searched for a string
+    # that could never appear in its own input, and passed on a document where both
+    # tables were in fact split. pdfplumber merges glyphs by proximity and returns
+    # the header intact.
+    try:
+        import pdfplumber
+    except ImportError:
+        warn("layout", "pdfplumber not installed; skipping split-table check")
+        return
+    for pdf in pdfs:
+        if not os.path.exists(pdf):
+            continue
+        name = os.path.basename(pdf)
+        with pdfplumber.open(pdf) as doc:
+            text = [(pg.extract_text() or '') for pg in doc.pages]
+        for h in headers:
+            hits = [i for i, t in enumerate(text, 1) if h in t]
+            for a, b in zip(hits, hits[1:]):
+                if b - a == 1:
+                    fail("layout", f"{name}: table {h!r} splits across pages {a} and {b}")
+
+
+# --------------------------------------------------------------------------------
 # 5. The generated HTML must match what is committed.
 # --------------------------------------------------------------------------------
 def check_reproducible():
@@ -236,6 +268,7 @@ def main():
     check_retired(files)
     check_numbers(files)
     check_typography(pdfs)
+    check_split_tables(pdfs)
     check_reproducible()
     if not args.quick:
         # the report opens each numbered section on a new page by design, so trailing
