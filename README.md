@@ -48,9 +48,11 @@ rather than hidden:
   authoritarian-left vs libertarian-right signature the project is built around).
 - **K-means** clustering, with a transparent judgement to use *k*=3 rather than the
   silhouette-optimal *k*=2 (which is itself the two-cluster story the title states).
-- **Two autoencoders**—a `tanh`-bottleneck network and a from-scratch, framework-free
-  linear-bottleneck one—used as an honest probe of nonlinearity. Together they show the
-  linear subspace is adequate for *reconstruction* but that the fine partition is
+- **Two autoencoders**, the first of which is kept for the record rather than for its answer.
+  A `tanh`-bottleneck network appeared to confirm the clusters, until its bottleneck turned out
+  to be bounded where the PCA scores it was being compared against are not; a from-scratch,
+  framework-free linear-bottleneck network, rebuilt without that flaw, disagrees. Together they
+  show the linear subspace is adequate for *reconstruction* but that the fine partition is
   *embedding-sensitive*, which is where the analysis's real uncertainty turns out to sit.
 - **Hierarchical (Ward) clustering** agrees substantially with K-means (ARI 0.75), with the
   only disagreement at the soft boundary between the two Reform clusters.
