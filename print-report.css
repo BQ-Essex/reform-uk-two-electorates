@@ -28,3 +28,15 @@ main > h2 + p + hr + h2 {
    on a near-empty page for no gain, so the appendix is left to flow naturally
    and land wherever there's room, same as any other section boundary marked by
    a rule rather than a heading. */
+
+/* The markdown `---` before each numbered heading renders as an <hr>, which on
+   screen is the divider between sections. In print it is not only redundant with
+   the page break above -- it actively breaks the layout. The rule is not a heading,
+   so `main > h2 { break-before: page }` does not apply to it: it flows onto the new
+   page, and then the h2 breaks again to the page after, stranding the rule alone.
+   That is what left page 21 blank apart from a 0.8pt line. Ten headings carry such
+   a rule; the rest happened to land where the previous page had room. Hidden in
+   print only -- on screen the divider still does its job. */
+main > hr:has(+ h2) {
+  display: none;
+}

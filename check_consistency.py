@@ -193,6 +193,11 @@ def check_layout(pdfs, section_break_ok=()):
                 # report a two-thirds-empty page as full.
                 body = [o for o in list(pg.chars) + list(pg.images) if 45 < o['top'] < H - 55]
                 if not body:
+                    # A page with no body content at all is the worst layout defect there
+                    # is, and the first version of this check skipped it -- `continue` on
+                    # an empty page meant a genuinely blank page was the one case that
+                    # could never be reported. It is a failure, not a warning.
+                    fail("layout", f"{name} p{i}: page is blank")
                     continue
                 usable = (H - 55) - 45
                 trail = ((H - 55) - max(o['bottom'] for o in body)) / usable * 100
