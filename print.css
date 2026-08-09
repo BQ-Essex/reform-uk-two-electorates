@@ -91,9 +91,14 @@ thead {
    fits in whatever's left on the current page far more often. Inset and centred also
    reads as more deliberate editorial layout than a chart stretched edge to edge. */
 figure img {
-  max-height: 95mm;
-  width: auto;
-  max-width: 100%;
+  /* Full column width. An earlier version capped printed height at 95mm to stop a
+     figure being pushed whole to the next page and leaving a gap behind it. That
+     traded legibility for tidiness, and lost: the biplot is nearly square, so
+     height-capping shrank it to about two-thirds of the column and its axis labels
+     became unreadable in print. In a document whose figures carry the argument, a
+     little whitespace is the cheaper cost. */
+  width: 100%;
+  height: auto;
   display: block;
   margin: 0 auto;
 }
@@ -121,6 +126,24 @@ th, td {
   overflow-wrap: anywhere;
   word-break: break-word;
 }
+/* The structure-of-notebook table is narrative markdown, not pandas output. The
+   mid-word breaking above exists for snake_case dataframe headers and mangles
+   ordinary prose into "Introd/uction" and "SECTIO/N", so it is switched off here.
+   The label column is also given its own width rather than being squeezed to
+   nothing by the wide contents column beside it. */
+table:not(.dataframe) th,
+table:not(.dataframe) td {
+  overflow-wrap: normal;
+  word-break: normal;
+  text-align: left;
+}
+table:not(.dataframe) th:first-child,
+table:not(.dataframe) td:first-child {
+  white-space: nowrap;
+  width: 1%;
+  padding-right: 26px;
+}
+
 /* table.dataframe already gets width:100% from report.html's own CSS, but on a
    table-layout:auto table (the default) that width is only a hint -- the renderer
    still expands a column past it to fit an unbreakable token first. table-layout:

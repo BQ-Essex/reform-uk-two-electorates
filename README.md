@@ -1,6 +1,6 @@
 # One Coalition, Two Electorates: Cross-Pressure in the Reform UK Vote
 
-**Bradley Quinlan**, 2026 · MA336 *Artificial Intelligence and Machine Learning with Applications*, University of Essex
+**Bradley Quinlan**, 2026 · *Artificial Intelligence and Machine Learning with Applications*, University of Essex
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![Jupyter](https://img.shields.io/badge/Jupyter-notebook-orange)
@@ -24,8 +24,8 @@ electorate is a single bloc or several.
 |------|-----------|
 | [`notebook/`](notebook/) | The full analysis notebook—code, narrative and figures inline. This is the primary artefact. |
 | [`report/report.html`](report/) | The complete write-up rendered for reading—prose, figures and tables, with the code kept in the notebook. |
-| [`report/SUMMARY.html`](report/SUMMARY.html) | The short summary, styled to match the report. |
-| [`report/SUMMARY.md`](report/SUMMARY.md) | A short, code-free reader's version—prose, figures and headline numbers. |
+| [`report/SUMMARY.html`](report/SUMMARY.html) | The short summary, generated from `SUMMARY.md` by `build_summary.py`. |
+| [`report/SUMMARY.md`](report/SUMMARY.md) | The code-free reader's version—the literature, the finding, and the limits, in plain language. Source for `SUMMARY.html`. |
 | [`figures/`](figures/) | The eleven figures exported from the analysis. |
 | [`data/`](data/) | The two open datasets, plus a README on obtaining the restricted survey data. |
 | [`fonts/`](fonts/) | Lora and Lato TTFs, embedded by `build_report.py` into `report.html`. |
@@ -137,9 +137,11 @@ so this runs unmodified on any platform. The notebook registers the same bundled
 for its own figures, so a top-to-bottom run reproduces the report's typography rather
 than falling back to a default face.
 
-It does not regenerate `SUMMARY.html`, which is maintained by hand and embeds its own
-copy of each figure. Changing a figure therefore means updating `SUMMARY.html`
-too—`build_report.py` will not do it for you, and CI only diffs `report.html`.
+`report/SUMMARY.html` is generated the same way, by `build_summary.py`, from
+`report/SUMMARY.md`. Both scripts share one stylesheet (`report_style.py`), so the
+two documents cannot drift apart typographically, and CI regenerates and diffs both.
+SUMMARY.html was hand-maintained until it had drifted from the report three separate
+times; generating it removed that failure mode rather than documenting it.
 
 The two print PDFs are then built from `report.html` and `SUMMARY.html` as they stand
 by `build_pdf.py` (`pip install weasyprint`). WeasyPrint's Python package alone isn't
@@ -165,7 +167,7 @@ present in a public runner; see the note at the top of the workflow file.
 
 ## Provenance
 
-This analysis began as a project for MA336 *Artificial Intelligence and Machine Learning with
+This analysis began as a project for *Artificial Intelligence and Machine Learning with
 Applications* at the University of Essex, and was subsequently revised and extended for
 standalone release: the survey coding was corrected,
 every figure recomputed from source, a second (linear-bottleneck) autoencoder and a battery of

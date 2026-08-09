@@ -40,13 +40,16 @@ jobs:
       - name: Regenerate report.html from the notebook
         run: python build_report.py
 
+      - name: Regenerate SUMMARY.html from SUMMARY.md
+        run: python build_summary.py
+
       - name: Build the print PDFs
         run: python build_pdf.py
 
-      - name: Check report.html matches what's committed
+      - name: Check the generated HTML matches what's committed
         run: |
-          if ! git diff --exit-code -- report/report.html; then
-            echo "::error::report.html regenerated from the notebook differs from what's committed. Run 'python build_report.py' locally and commit the result."
+          if ! git diff --exit-code -- report/report.html report/SUMMARY.html; then
+            echo "::error::report.html or SUMMARY.html regenerated from source differs from what's committed. Run 'python build_report.py && python build_summary.py' locally and commit the result."
             exit 1
           fi
         # The two PDFs aren't compared here: WeasyPrint embeds a build
