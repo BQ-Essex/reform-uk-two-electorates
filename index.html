@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>One Coalition, Two Electorates</title>
+<meta name="author" content="Bradley Quinlan">
+<meta name="description" content="Whether Reform UK's 2024 electorate is a single bloc or several: a multi-method machine-learning analysis of the British Social Attitudes Survey.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400&family=Public+Sans:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--canvas:#F6F5F1;--ink:#242628;--muted:#5A6165;--rule:#DDD6CB;
+--slate:#3E5B76;--ochre:#7A5230;--mauve:#7E6578;--band:#EFEBE1;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--canvas);color:var(--ink);
+font-family:'Public Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:0 22px 90px}
+header{padding:72px 0 30px;border-bottom:1px solid var(--rule);margin-bottom:38px}
+.dots{display:flex;gap:8px;margin-bottom:26px}
+.dots i{width:11px;height:11px;border-radius:50%;display:block}
+.eyebrow{font-size:12.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--ochre);font-weight:700;margin:0 0 16px}
+h1{font-family:Lora,Georgia,serif;font-weight:600;font-size:44px;line-height:1.12;letter-spacing:-.012em;margin:0 0 18px}
+.standfirst{font-family:Lora,Georgia,serif;font-style:italic;font-size:20px;line-height:1.5;color:#3d4247;margin:0 0 26px;max-width:56ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px 24px;font-size:14px;color:var(--muted);padding-top:18px;border-top:1px solid var(--rule)}
+.meta b{color:var(--ink)}
+h2{font-family:Lora,Georgia,serif;font-weight:600;font-size:23px;margin:40px 0 14px}
+a{color:var(--ochre);text-underline-offset:2px}
+.card{display:block;text-decoration:none;color:inherit;border:1px solid var(--rule);
+border-radius:5px;padding:19px 22px;margin:0 0 13px;background:#FBFAF7;transition:border-color .15s}
+.card:hover{border-color:var(--ochre)}
+.card .t{font-family:Lora,Georgia,serif;font-size:20px;font-weight:600;margin:0 0 5px;color:var(--ink)}
+.card .d{font-size:15.5px;color:var(--muted);margin:0}
+.card .tag{display:inline-block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+font-weight:700;color:var(--ochre);margin-bottom:7px}
+.note{font-size:14.5px;color:var(--muted);border-left:3px solid var(--band);padding:2px 0 2px 16px;margin:30px 0}
+footer{margin-top:46px;padding-top:20px;border-top:1px solid var(--rule);font-size:14px;color:var(--muted)}
+@media(max-width:600px){h1{font-size:34px}body{font-size:17px}header{padding-top:48px}}
+</style></head><body><div class="wrap">
+
+<header>
+  <div class="dots"><i style="background:var(--slate)"></i><i style="background:var(--ochre)"></i><i style="background:var(--mauve)"></i></div>
+  <p class="eyebrow">Cross-Pressure Study &middot; 2026</p>
+  <h1>One Coalition, Two Electorates</h1>
+  <p class="standfirst">Whether Reform UK&rsquo;s 2024 electorate is a single bloc or several&mdash;asked of the data rather than assumed.</p>
+  <div class="meta"><span><b>Bradley Quinlan</b></span><span>University of Essex</span><span>British Social Attitudes 2014 &amp; 2024</span></div>
+</header>
+
+<h2>Read it</h2>
+
+<a class="card" href="report/SUMMARY.html">
+  <span class="tag">Start here</span>
+  <p class="t">The plain-language summary</p>
+  <p class="d">The question, the literature it argues with, the finding and its limits&mdash;no code, no jargon. About fifteen minutes.</p>
+</a>
+
+<a class="card" href="report/report.html">
+  <p class="t">The full report</p>
+  <p class="d">Sixty-six pages: every method, every robustness check, and the places the analysis changed course. Self-contained, so it is a large page on a slow connection.</p>
+</a>
+
+<a class="card" href="https://github.com/BQ-Essex/reform-uk-two-electorates/blob/main/notebook/MA336_Project_Notebook.ipynb">
+  <p class="t">The notebook</p>
+  <p class="d">The analysis itself&mdash;code, narrative and figures inline. This is the primary artefact; everything else is generated from it.</p>
+</a>
+
+<a class="card" href="https://github.com/BQ-Essex/reform-uk-two-electorates">
+  <p class="t">Source and data documentation</p>
+  <p class="d">The repository, including how to obtain the restricted survey files and rebuild every document from scratch.</p>
+</a>
+
+<h2>Print versions</h2>
+<p><a href="report/One_Coalition_Two_Electorates_summary.pdf">Summary (PDF, 1&nbsp;MB)</a> &nbsp;&middot;&nbsp;
+   <a href="report/One_Coalition_Two_Electorates_report.pdf">Full report (PDF, 3&nbsp;MB)</a></p>
+
+<p class="note">The British Social Attitudes microdata is licence-restricted and is not redistributed here.
+Every figure in this project is a derived statistical output&mdash;aggregate summaries, model results and
+cluster centroids. No individual records are reproduced.</p>
+
+<footer>
+  Bradley Quinlan, 2026 &middot; Artificial Intelligence and Machine Learning with Applications, University of Essex<br>
+  Code released under the MIT Licence. Report text and figures &copy; Bradley Quinlan.
+</footer>
+
+</div></body></html>
